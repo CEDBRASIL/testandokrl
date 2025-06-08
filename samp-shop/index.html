@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Contas SAMP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">SAMP Store</div>
+        <nav id="nav" class="nav">
+            <ul class="nav-links">
+                <li><a href="#home" data-section="home">Home</a></li>
+                <li><a href="#catalog" data-section="catalog">Catálogo</a></li>
+                <li><a href="#cart" data-section="cart">Carrinho</a></li>
+                <li><a href="#contact" data-section="contact">Contato</a></li>
+            </ul>
+            <div class="burger" id="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="section active fade">
+            <h1>Compre contas de SAMP com segurança</h1>
+            <p>As melhores contas prontas para jogar.</p>
+        </section>
+
+        <section id="catalog" class="section fade">
+            <h2>Catálogo de Contas</h2>
+            <div id="product-list" class="product-list"></div>
+        </section>
+
+        <section id="details" class="section fade">
+            <button class="back" data-section="catalog">&larr; Voltar</button>
+            <div id="details-content"></div>
+        </section>
+
+        <section id="cart" class="section fade">
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <p id="cart-total"></p>
+            <button id="to-checkout">Ir para Checkout</button>
+        </section>
+
+        <section id="checkout" class="section fade">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label>Nome: <input type="text" name="name" required></label>
+                <label>Email: <input type="email" name="email" required></label>
+                <label>Discord: <input type="text" name="discord" required></label>
+                <button type="submit">Finalizar Compra</button>
+            </form>
+        </section>
+
+        <section id="contact" class="section fade">
+            <h2>Contato</h2>
+            <form id="contact-form">
+                <label>Nome: <input type="text" required></label>
+                <label>Email: <input type="email" required></label>
+                <label>Mensagem:<textarea required></textarea></label>
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="map">
+                <iframe src="https://maps.google.com/maps?q=Bras%C3%ADlia&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 SAMP Store</p>
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">Discord</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
