@@ -1,8 +1,9 @@
 /* Estilo base */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #181818;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(180deg, #181818, #1f1f1f);
     color: #f0f0f0;
 }
 
@@ -15,6 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     z-index: 1000;
 }
 
@@ -77,6 +79,11 @@ body {
     opacity: 1;
 }
 
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
 .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -86,7 +93,13 @@ body {
 .product {
     background: #282828;
     padding: 1rem;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
 }
 
 .product img {
@@ -94,15 +107,47 @@ body {
     border-radius: 4px;
 }
 
+button,
+input,
+textarea {
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+form > * {
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    background: #ff6600;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e05500;
+}
+
 .footer {
     background: #202020;
     padding: 1rem;
     text-align: center;
+    margin-top: 2rem;
 }
 
 .social a {
     margin: 0 0.5rem;
     color: #ff6600;
+}
+
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
 }
 
 /* Responsividade */
