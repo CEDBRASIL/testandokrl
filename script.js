@@ -1,27 +1,15 @@
-/* Dados simulados das contas */
-const products = [
-    {
-        id: 1,
-        name: 'Conta Premium',
-        desc: 'Conta com diversos benefícios e veículos.',
-        price: 50,
-        img: 'https://via.placeholder.com/300x150?text=Conta+1'
-    },
-    {
-        id: 2,
-        name: 'Conta Intermediária',
-        desc: 'Ótima para quem está começando.',
-        price: 30,
-        img: 'https://via.placeholder.com/300x150?text=Conta+2'
-    },
-    {
-        id: 3,
-        name: 'Conta Básica',
-        desc: 'Simples, mas pronta para o jogo.',
-        price: 15,
-        img: 'https://via.placeholder.com/300x150?text=Conta+3'
+/* Produtos carregados dinamicamente */
+let products = [];
+
+async function loadProducts() {
+    try {
+        const res = await fetch('products.json');
+        if (!res.ok) throw new Error('Erro ao carregar produtos');
+        products = await res.json();
+    } catch (err) {
+        console.error(err);
     }
-];
+}
 
 const state = {
     cart: []
@@ -69,21 +57,23 @@ document.querySelectorAll('a[data-section], button[data-section]').forEach(el =>
 });
 
 /* Renderização do catálogo */
-function renderProducts() {
+function renderProducts(filter = '') {
     const list = $('#product-list');
     list.innerHTML = '';
-    products.forEach(p => {
-        const div = document.createElement('div');
-        div.className = 'product';
-        div.innerHTML = `
-            <img src="${p.img}" alt="${p.name}">
-            <h3>${p.name}</h3>
+    products
+        .filter(p => p.name.toLowerCase().includes(filter))
+        .forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'product';
+            div.innerHTML = `
+                <img src="${p.img}" alt="${p.name}">
+                <h3>${p.name}</h3>
             <p>${p.desc}</p>
             <p><strong>R$ ${p.price}</strong></p>
             <button data-id="${p.id}" class="buy">Comprar</button>
         `;
-        list.appendChild(div);
-    });
+            list.appendChild(div);
+        });
 }
 
 /* Detalhes do produto */
@@ -166,5 +156,16 @@ $('#contact-form').addEventListener('submit', e => {
 });
 
 /* Inicialização */
-renderProducts();
-showSection('home');
+/* Busca */
+const searchInput = $('#search');
+if (searchInput) {
+    searchInput.addEventListener('input', e => {
+        renderProducts(e.target.value.toLowerCase());
+    });
+}
+
+loadProducts().then(() => {
+    renderProducts();
+    showSection('home');
+});
+
