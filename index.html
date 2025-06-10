@@ -15,10 +15,50 @@
     
     <!-- Custom Styles -->
     <style>
+        /* Estilos base para o tema escuro (padrão) */
+        :root {
+            --bg-color: #000000;
+            --text-color: #E5E7EB;
+            --text-muted-color: #9CA3AF;
+            --card-bg-color: rgba(17, 24, 39, 0.5); /* bg-gray-900 com opacidade */
+            --border-color: #374151;
+            --header-button-bg: #1F2937;
+        }
+
+        /* Estilos para o tema claro */
+        .light-theme {
+            --bg-color: #F9FAFB;
+            --text-color: #1F2937;
+            --text-muted-color: #4B5563;
+            --card-bg-color: rgba(255, 255, 255, 0.8);
+            --border-color: #E5E7EB;
+            --header-button-bg: #E5E7EB;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #E5E7EB; /* gray-200 */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .text-muted {
+             color: var(--text-muted-color);
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-button {
+            background-color: var(--header-button-bg);
+            color: var(--text-color);
+        }
+
+        .header-button:hover {
+            background-color: var(--border-color);
         }
 
         /* Efeito de brilho principal */
@@ -33,6 +73,10 @@
         .card-glow:hover {
             box-shadow: 0 0 25px 5px rgba(168, 85, 247, 0.4), 0 0 10px 2px rgba(168, 85, 247, 0.3);
         }
+        .light-theme .card-glow:hover {
+            box-shadow: 0 0 30px 5px rgba(168, 85, 247, 0.2);
+        }
+
 
         .button-glow {
             transition: all 0.3s ease-in-out;
@@ -54,6 +98,53 @@
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Theme Switcher */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 48px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #374151;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 3px;
+            content: "";
+            height: 18px;
+            left: 3px;
+            position: absolute;
+            transition: .4s;
+            width: 18px;
+            border-radius: 50%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        input:checked + .slider {
+            background-color: #A855F7;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>');
         }
 
     </style>
@@ -78,10 +169,23 @@
                 <a href="#features" class="hover:text-purple-400 transition-colors">Vantagens</a>
                 <a href="#pricing" class="hover:text-purple-400 transition-colors">Preços</a>
                 <a href="#testimonials" class="hover:text-purple-400 transition-colors">Clientes</a>
+                <a href="#faq" class="hover:text-purple-400 transition-colors">FAQ</a>
             </nav>
-            <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="hidden md:inline-block bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors">
-                Fazer Orçamento
-            </a>
+            <div class="hidden md:flex items-center space-x-4">
+                 <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </div>
+                 <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors">PT</button>
+                 <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="header-button font-semibold py-2 px-6 rounded-lg transition-colors">
+                    Fazer Orçamento
+                </a>
+            </div>
             <!-- Botão do Menu Mobile (Hamburguer) -->
             <button id="open-menu-btn" class="md:hidden text-white">
                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -90,8 +194,13 @@
 
         <!-- Menu Mobile (oculto por padrão) -->
         <div id="mobile-menu" class="hidden fixed inset-0 bg-black bg-opacity-95 z-50">
-            <div class="flex justify-end p-6">
-                <!-- Botão de Fechar Menu Mobile -->
+            <div class="flex justify-between items-center p-6">
+                 <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="mobile-theme-checkbox">
+                        <input type="checkbox" id="mobile-theme-checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </div>
                 <button id="close-menu-btn" class="text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
@@ -100,6 +209,13 @@
                 <a href="#features" class="hover:text-purple-400 transition-colors">Vantagens</a>
                 <a href="#pricing" class="hover:text-purple-400 transition-colors">Preços</a>
                 <a href="#testimonials" class="hover:text-purple-400 transition-colors">Clientes</a>
+                 <a href="#faq" class="hover:text-purple-400 transition-colors">FAQ</a>
+                <div class="flex items-center space-x-6 mt-4">
+                     <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                     <button class="px-4 py-2 border border-gray-700 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors">PT</button>
+                </div>
                 <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="mt-8 bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
                     Fazer Orçamento
                 </a>
@@ -113,53 +229,53 @@
                 Sites Profissionais com <br> 
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Design Exclusivo do seu jeito</span>.
             </h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-300 mb-10">
-                Desenvolvimento do seu site por um pagamento único de <span class="font-bold text-white">R$12,50</span>. <br>Hospedagem + Domínio por apenas <span class="font-bold text-white">R$10 por mês</span>.
+             <p class="text-lg md:text-xl max-w-2xl mx-auto text-muted mb-10">
+                Criação do site por um pagamento único de <span class="font-bold text-color">R$19,90</span>. <br>Hospedagem e manutenção por <span class="font-bold text-color">R$29,90 por mês</span>.
             </p>
             <div class="flex justify-center items-center gap-4 flex-wrap">
-                <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="button-glow bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full">
-                    Fazer Orçamento via WhatsApp
+                <a href="#pricing" class="button-glow bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full">
+                    Ver Planos
                 </a>
             </div>
-            <div class="mt-16 mx-auto max-w-4xl p-2 bg-black bg-opacity-20 border border-gray-800 rounded-2xl shadow-2xl shadow-purple-500/10">
+            <div class="mt-16 mx-auto max-w-4xl p-2 card rounded-2xl shadow-2xl shadow-purple-500/10">
                  <img src="https://image.thum.io/get/width/1200/crop/600/https://www.cedbrasilia.com.br" 
                       alt="Exemplo de site criado pela EncryptHost - cedbrasilia.com.br" 
                       class="rounded-xl w-full"
                       onerror="this.onerror=null;this.src='https://placehold.co/1200x600/000000/FFFFFF?text=Image+Not+Found';">
-                <p class="text-center text-sm text-gray-400 italic mt-2 pb-2">Uma das nossas obras-primas</p>
+                <p class="text-center text-sm text-muted italic mt-2 pb-2">Uma das nossas obras-primas</p>
             </div>
         </main>
 
         <!-- Features Section -->
         <section id="features" class="py-20 reveal">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold tracking-tighter">Vantagens do Nosso Desenvolvimento</h2>
-                <p class="text-lg text-gray-400 mt-2">Qualidade profissional e transparência total.</p>
+                <h2 class="text-4xl font-bold tracking-tighter">Vantagens que você só encontra aqui</h2>
+                <p class="text-lg text-muted mt-2">Qualidade profissional e transparência total.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="card-glow bg-gray-900 bg-opacity-50 border border-gray-800 p-8 rounded-2xl transition-all duration-300">
+                <div class="card card-glow p-8 rounded-2xl transition-all duration-300">
                     <div class="bg-purple-500 bg-opacity-20 text-purple-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-2">Design Responsivo</h3>
-                    <p class="text-gray-400">Seu site perfeito em qualquer dispositivo: celulares, tablets e computadores.</p>
+                    <p class="text-muted">Seu site perfeito em qualquer dispositivo: celulares, tablets e computadores.</p>
                 </div>
                 <!-- Feature 2 -->
-                <div class="card-glow bg-gray-900 bg-opacity-50 border border-gray-800 p-8 rounded-2xl transition-all duration-300">
+                <div class="card card-glow p-8 rounded-2xl transition-all duration-300">
                      <div class="bg-blue-500 bg-opacity-20 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Pagamento Único</h3>
-                    <p class="text-gray-400">Pague uma única vez pelo design e desenvolvimento e o site é seu para sempre.</p>
+                    <h3 class="text-2xl font-bold mb-2">Flexibilidade Total</h3>
+                    <p class="text-muted">Pague apenas pelo desenvolvimento ou adicione nosso plano de hospedagem completo.</p>
                 </div>
                 <!-- Feature 3 -->
-                <div class="card-glow bg-gray-900 bg-opacity-50 border border-gray-800 p-8 rounded-2xl transition-all duration-300">
+                <div class="card card-glow p-8 rounded-2xl transition-all duration-300">
                     <div class="bg-pink-500 bg-opacity-20 text-pink-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><path d="m12 9-2 4h4l-2 4"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-2">Entrega Rápida</h3>
-                    <p class="text-gray-400">Receba seu site pronto para usar em tempo recorde, feito por desenvolvedores.</p>
+                    <p class="text-muted">Receba seu site pronto para usar em tempo recorde, feito por desenvolvedores.</p>
                 </div>
             </div>
         </section>
@@ -168,39 +284,38 @@
         <section id="pricing" class="py-20 reveal">
              <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold tracking-tighter">Preços Claros e Justos</h2>
-                <p class="text-lg text-gray-400 mt-2">Escolha o que faz sentido para você. Sem pegadinhas.</p>
+                <p class="text-lg text-muted mt-2">Escolha o que faz sentido para você. Sem pegadinhas.</p>
             </div>
             <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Pricing Plan 1: Development -->
-                <div class="bg-gray-900 bg-opacity-50 border border-gray-800 p-8 rounded-2xl flex flex-col">
+                <!-- Pricing Plan 1: Development Only -->
+                <div class="card p-8 rounded-2xl flex flex-col">
                     <h3 class="text-2xl font-bold mb-2">Desenvolvimento do Site</h3>
-                    <p class="text-5xl font-bold my-6">R$12<span class="text-3xl font-bold">,50</span></p>
-                    <p class="text-lg font-normal text-gray-400 mb-6">Pagamento Único</p>
-                    <ul class="space-y-4 text-gray-300 flex-grow">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Design profissional e moderno</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Layout 100% responsivo</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Entrega do código-fonte</li>
+                    <p class="text-5xl font-bold my-4">R$19<span class="text-3xl font-bold">,90</span></p>
+                    <p class="text-lg font-normal text-muted mb-6">Pagamento Único</p>
+                    <ul class="space-y-4 text-muted flex-grow">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Design profissional e moderno</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Layout 100% responsivo</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Entrega do código-fonte</li>
                     </ul>
-                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20desenvolvimento%20do%20site%20por%20R$12,50" target="_blank" class="mt-8 w-full text-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 rounded-lg transition-colors">
-                        Quero Meu Site
+                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20desenvolvimento%20do%20site%20por%20R$19,90" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors">
+                        Quero Só o Site
                     </a>
                 </div>
 
-                <!-- Pricing Plan 2: Hosting -->
-                <div class="bg-gray-900 bg-opacity-70 border-2 border-purple-500 p-8 rounded-2xl flex flex-col shadow-2xl shadow-purple-500/30 relative">
+                <!-- Pricing Plan 2: All-in-one -->
+                <div class="card p-8 rounded-2xl flex flex-col border-2 border-purple-500 shadow-2xl shadow-purple-500/30 relative">
                      <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Recomendado</span>
                     <h3 class="text-2xl font-bold mb-2 text-purple-300">Hospedagem + Domínio</h3>
-                    <p class="text-gray-400 mb-6">Para manter seu site no ar com segurança.</p>
-                    <p class="text-5xl font-bold mb-2 text-white">R$10</p>
-                    <p class="text-lg font-normal text-gray-400 mb-6">por Mês</p>
-                    <ul class="space-y-4 text-gray-300 flex-grow">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Hospedagem rápida e segura</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Domínio gratuito</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Certificado de Segurança SSL</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Acessos ilimitados</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Opção de usar seu domínio próprio</li>
+                    <p class="text-5xl font-bold my-4 text-color">R$29<span class="text-3xl font-bold">,90</span></p>
+                    <p class="text-lg font-normal text-muted mb-6">por Mês</p>
+                    <ul class="space-y-4 text-muted flex-grow">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Hospedagem rápida e segura</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Domínio gratuito</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Certificado de Segurança SSL</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Acessos ilimitados</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Manutenção e suporte</li>
                     </ul>
-                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20contratar%20a%20hospedagem%20mensal" target="_blank" class="button-glow mt-8 w-full text-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 rounded-lg">
+                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20contratar%20a%20hospedagem%20mensal." target="_blank" class="button-glow mt-8 w-full text-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 rounded-lg">
                         Contratar Hospedagem
                     </a>
                 </div>
@@ -212,37 +327,70 @@
         <section id="testimonials" class="py-20 reveal">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold tracking-tighter">O que nossos clientes dizem</h2>
-                <p class="text-lg text-gray-400 mt-2">A satisfação de quem já tem um site feito pela EncryptHost.</p>
+                <p class="text-lg text-muted mt-2">A satisfação de quem já tem um site feito pela EncryptHost.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="card-glow bg-gray-900 bg-opacity-50 border border-gray-800 p-8 rounded-2xl">
-                    <p class="text-gray-300 italic mb-6">"Inacreditável a qualidade do site pelo preço. Paguei menos de 15 reais e recebi um trabalho profissional que outras empresas cobrariam centenas. Recomendo demais!"</p>
+                <div class="card card-glow p-8 rounded-2xl">
+                    <p class="text-muted italic mb-6">"Inacreditável a qualidade do site pelo preço. Paguei só R$19,90 e recebi um trabalho profissional que outras empresas cobrariam centenas. Recomendo demais!"</p>
                     <div class="flex items-center">
                         <img src="https://placehold.co/48x48/7C3AED/FFFFFF?text=JS" alt="Avatar de Joana Silva" class="w-12 h-12 rounded-full mr-4" onerror="this.onerror=null;this.src='https://placehold.co/48x48/CCCCCC/FFFFFF?text=??';">
                         <div>
-                            <p class="font-bold text-white">Juliana S.</p>
-                            <p class="text-sm text-gray-400">Dona de Pequeno Negócio</p>
+                            <p class="font-bold text-color">Juliana S.</p>
+                            <p class="text-sm text-muted">Dona de Pequeno Negócio</p>
                         </div>
                     </div>
                 </div>
-                 <div class="card-glow bg-gray-900 bg-opacity-50 border border-gray-800 p-8 rounded-2xl">
-                    <p class="text-gray-300 italic mb-6">"Processo super rápido e direto pelo WhatsApp. O site ficou exatamente como eu queria. A hospedagem mensal de 10 reais é muito justa. Ótimo custo-benefício."</p>
+                 <div class="card card-glow p-8 rounded-2xl">
+                    <p class="text-muted italic mb-6">"O atendimento foi super rápido e o plano de hospedagem mensal é muito completo e acessível. Finalmente tenho meu site no ar sem dor de cabeça."</p>
                     <div class="flex items-center">
                         <img src="https://placehold.co/48x48/EC4899/FFFFFF?text=MA" alt="Avatar de Marcos Andrade" class="w-12 h-12 rounded-full mr-4" onerror="this.onerror=null;this.src='https://placehold.co/48x48/CCCCCC/FFFFFF?text=??';">
                         <div>
-                            <p class="font-bold text-white">Ricardo Alves</p>
-                            <p class="text-sm text-gray-400">Fotógrafo Freelancer</p>
+                            <p class="font-bold text-color">Ricardo Alves</p>
+                            <p class="text-sm text-muted">Fotógrafo Freelancer</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold tracking-tighter">Perguntas Frequentes</h2>
+                <p class="text-lg text-muted mt-2">Tirando todas as suas dúvidas.</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="faq-item">
+                    <h3 class="text-xl font-semibold mb-2">O que eu recebo no plano de "Desenvolvimento do Site"?</h3>
+                    <p class="text-muted">No plano de R$19,90, nós criamos um site completo e personalizado para você, com design moderno e responsivo. Ao final, entregamos todo o código-fonte. Você se torna dono do site e pode hospedá-lo onde quiser.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-xl font-semibold mb-2">E no plano de "Hospedagem + Domínio"?</h3>
+                    <p class="text-muted">Este é o nosso serviço de manutenção. Por R$29,90 por mês, nós cuidamos de tudo para você: mantemos seu site no ar em servidores rápidos e seguros, registramos um domínio gratuito para você, garantimos a segurança com certificado SSL e oferecemos suporte técnico.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-xl font-semibold mb-2">O que é uma hospedagem?</h3>
+                    <p class="text-muted">Hospedagem é o serviço que armazena seu site e o torna acessível na internet. Pense nela como o "terreno" onde sua "casa" (o site) é construída. Sem hospedagem, ninguém consegue visitar seu site.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="text-xl font-semibold mb-2">O que é um domínio?</h3>
+                    <p class="text-muted">Domínio é o endereço do seu site (ex: `www.suaempresa.com.br`). É como as pessoas encontram você na internet. Em nosso plano de hospedagem, o registro do primeiro ano é por nossa conta.</p>
+                </div>
+                 <div class="faq-item">
+                    <h3 class="text-xl font-semibold mb-2">Posso contratar apenas a hospedagem se já tenho um site?</h3>
+                    <p class="text-muted">Sim! Se você já tem um site pronto, pode contratar nosso plano de hospedagem e nós faremos a migração para nossos servidores, cuidando de toda a configuração para você.</p>
+                </div>
+            </div>
+        </section>
+
+
         <!-- Footer -->
-        <footer class="text-center py-12 border-t border-gray-800 mt-12">
-            <p class="text-gray-400">&copy; 2025 EncryptHost. Todos os direitos reservados.</p>
+        <footer class="text-center py-12 border-t border-color mt-12">
+            <p class="text-muted">&copy; 2025 EncryptHost. Todos os direitos reservados.</p>
              <div class="flex justify-center space-x-6 mt-4">
-                <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-500 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-500 hover:text-purple-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
              </div>
         </footer>
     </div>
@@ -280,12 +428,34 @@
             mobileMenu.classList.add('hidden');
         });
 
-        // Fecha o menu quando um link é clicado (útil para navegação na mesma página)
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Lógica do Interruptor de Tema
+        const themeCheckbox = document.getElementById('theme-checkbox');
+        const mobileThemeCheckbox = document.getElementById('mobile-theme-checkbox');
+
+        function applyTheme(isLight) {
+             if (isLight) {
+                document.body.classList.add('light-theme');
+            } else {
+                document.body.classList.remove('light-theme');
+            }
+        }
+
+        themeCheckbox.addEventListener('change', () => {
+            applyTheme(themeCheckbox.checked);
+            mobileThemeCheckbox.checked = themeCheckbox.checked;
+        });
+
+         mobileThemeCheckbox.addEventListener('change', () => {
+            applyTheme(mobileThemeCheckbox.checked);
+            themeCheckbox.checked = mobileThemeCheckbox.checked;
+        });
+
     });
     </script>
 </body>
