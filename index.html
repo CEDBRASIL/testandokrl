@@ -163,13 +163,13 @@
         <!-- Header -->
         <header class="flex justify-between items-center py-4">
             <div class="text-3xl font-bold tracking-tighter">
-                <a href="#">EncryptHost<span class="text-purple-400">.</span></a>
+                <a href="#"><span class="text-purple-400">&lt;</span>EncryptHost<span class="text-purple-400">./&gt;</span></a>
             </div>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#features" class="hover:text-purple-400 transition-colors">Vantagens</a>
-                <a href="#pricing" class="hover:text-purple-400 transition-colors">Preços</a>
-                <a href="#testimonials" class="hover:text-purple-400 transition-colors">Clientes</a>
-                <a href="#faq" class="hover:text-purple-400 transition-colors">FAQ</a>
+                <a href="#features" class="hover:text-purple-400 transition-colors" data-translate="nav_features">Vantagens</a>
+                <a href="#pricing" class="hover:text-purple-400 transition-colors" data-translate="nav_pricing">Preços</a>
+                <a href="#testimonials" class="hover:text-purple-400 transition-colors" data-translate="nav_testimonials">Clientes</a>
+                <a href="#faq" class="hover:text-purple-400 transition-colors" data-translate="nav_faq">FAQ</a>
             </nav>
             <div class="hidden md:flex items-center space-x-4">
                  <div class="theme-switch-wrapper">
@@ -178,11 +178,27 @@
                         <div class="slider"></div>
                     </label>
                 </div>
-                 <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors">PT</button>
+                <!-- Language Dropdown -->
+                <div class="relative group">
+                    <button id="lang-switcher-btn" class="px-3 py-1.5 border border-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors flex items-center">
+                        PT
+                        <svg class="w-4 h-4 ml-1 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="absolute opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 group-hover:delay-300 right-0 mt-2 w-40 rounded-lg shadow-lg card z-10">
+                        <div class="py-1" id="lang-desktop-menu">
+                            <a href="#" class="block px-4 py-2 text-sm text-muted hover:bg-gray-800 hover:text-white" onclick="setLanguage('pt', event)">Português (PT)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-muted hover:bg-gray-800 hover:text-white" onclick="setLanguage('en', event)">English (EN)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-muted hover:bg-gray-800 hover:text-white" onclick="setLanguage('ru', event)">Русский (RU)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-muted hover:bg-gray-800 hover:text-white" onclick="setLanguage('es', event)">Español (ES)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-muted hover:bg-gray-800 hover:text-white" onclick="setLanguage('ja', event)">日本語 (JA)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-muted hover:bg-gray-800 hover:text-white" onclick="setLanguage('zh', event)">中文 (ZH)</a>
+                        </div>
+                    </div>
+                </div>
                  <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-400 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="header-button font-semibold py-2 px-6 rounded-lg transition-colors">
+                <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="header-button font-semibold py-2 px-6 rounded-lg transition-colors" data-translate="btn_get_quote">
                     Fazer Orçamento
                 </a>
             </div>
@@ -206,17 +222,25 @@
                 </button>
             </div>
             <nav class="flex flex-col items-center justify-center h-full -mt-16 text-2xl space-y-8">
-                <a href="#features" class="hover:text-purple-400 transition-colors">Vantagens</a>
-                <a href="#pricing" class="hover:text-purple-400 transition-colors">Preços</a>
-                <a href="#testimonials" class="hover:text-purple-400 transition-colors">Clientes</a>
-                 <a href="#faq" class="hover:text-purple-400 transition-colors">FAQ</a>
-                <div class="flex items-center space-x-6 mt-4">
-                     <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-400 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                     <button class="px-4 py-2 border border-gray-700 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors">PT</button>
+                <a href="#features" class="hover:text-purple-400 transition-colors" data-translate="nav_features_mobile">Vantagens</a>
+                <a href="#pricing" class="hover:text-purple-400 transition-colors" data-translate="nav_pricing_mobile">Preços</a>
+                <a href="#testimonials" class="hover:text-purple-400 transition-colors" data-translate="nav_testimonials_mobile">Clientes</a>
+                 <a href="#faq" class="hover:text-purple-400 transition-colors" data-translate="nav_faq_mobile">FAQ</a>
+                
+                <div id="lang-mobile-menu" class="flex items-center justify-center flex-wrap gap-4 mt-4 px-4">
+                    <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-base font-semibold hover:bg-gray-800 transition-colors" onclick="setLanguage('pt', event)">PT</button>
+                    <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-base font-semibold hover:bg-gray-800 transition-colors" onclick="setLanguage('en', event)">EN</button>
+                    <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-base font-semibold hover:bg-gray-800 transition-colors" onclick="setLanguage('ru', event)">RU</button>
+                    <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-base font-semibold hover:bg-gray-800 transition-colors" onclick="setLanguage('es', event)">ES</button>
+                    <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-base font-semibold hover:bg-gray-800 transition-colors" onclick="setLanguage('ja', event)">JA</button>
+                    <button class="px-3 py-1.5 border border-gray-700 rounded-lg text-base font-semibold hover:bg-gray-800 transition-colors" onclick="setLanguage('zh', event)">ZH</button>
                 </div>
-                <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="mt-8 bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                
+                 <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-400 hover:text-white">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                 
+                <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20desenvolver%20um%20site" target="_blank" class="mt-8 bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors" data-translate="btn_get_quote_mobile">
                     Fazer Orçamento
                 </a>
             </nav>
@@ -225,32 +249,32 @@
 
         <!-- Hero Section -->
         <main class="text-center py-20 md:py-32 reveal">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-tight mb-6">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-tight mb-6" data-translate="hero_title">
                 Sites Profissionais com <br> 
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Design Exclusivo do seu jeito</span>.
             </h1>
-             <p class="text-lg md:text-xl max-w-2xl mx-auto text-muted mb-10">
+             <p class="text-lg md:text-xl max-w-2xl mx-auto text-muted mb-10" data-translate="hero_subtitle">
                 Flexibilidade para escolher exatamente o que você precisa. Comece com o desenvolvimento do seu site ou escolha um de nossos planos completos.
             </p>
             <div class="flex justify-center items-center gap-4 flex-wrap">
-                <a href="#pricing" class="button-glow bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full">
+                <a href="#pricing" class="button-glow bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full" data-translate="btn_see_plans">
                     Ver Planos
                 </a>
             </div>
             <div class="mt-16 mx-auto max-w-4xl p-2 card rounded-2xl shadow-2xl shadow-purple-500/10">
                  <img src="https://image.thum.io/get/width/1200/crop/600/https://www.cedbrasilia.com.br" 
-                      alt="Exemplo de site criado pela EncryptHost - cedbrasilia.com.br" 
-                      class="rounded-xl w-full"
-                      onerror="this.onerror=null;this.src='https://placehold.co/1200x600/000000/FFFFFF?text=Image+Not+Found';">
-                <p class="text-center text-sm text-muted italic mt-2 pb-2">Uma das nossas obras-primas</p>
+                       alt="Exemplo de site criado pela EncryptHost - cedbrasilia.com.br" 
+                       class="rounded-xl w-full"
+                       onerror="this.onerror=null;this.src='https://placehold.co/1200x600/000000/FFFFFF?text=Image+Not+Found';">
+                <p class="text-center text-sm text-muted italic mt-2 pb-2" data-translate="hero_image_caption">Uma das nossas obras-primas</p>
             </div>
         </main>
 
         <!-- Features Section -->
         <section id="features" class="py-20 reveal">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold tracking-tighter">Vantagens que você só encontra aqui</h2>
-                <p class="text-lg text-muted mt-2">Qualidade profissional e transparência total.</p>
+                <h2 class="text-4xl font-bold tracking-tighter" data-translate="features_title">Vantagens que você só encontra aqui</h2>
+                <p class="text-lg text-muted mt-2" data-translate="features_subtitle">Qualidade profissional e transparência total.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
@@ -258,24 +282,24 @@
                     <div class="bg-purple-500 bg-opacity-20 text-purple-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Design Responsivo</h3>
-                    <p class="text-muted">Seu site perfeito em qualquer dispositivo: celulares, tablets e computadores.</p>
+                    <h3 class="text-2xl font-bold mb-2" data-translate="feature1_title">Design Responsivo</h3>
+                    <p class="text-muted" data-translate="feature1_desc">Seu site perfeito em qualquer dispositivo: celulares, tablets e computadores.</p>
                 </div>
                 <!-- Feature 2 -->
                 <div class="card card-glow p-8 rounded-2xl transition-all duration-300">
                      <div class="bg-blue-500 bg-opacity-20 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Flexibilidade Total</h3>
-                    <p class="text-muted">Pague apenas pelo desenvolvimento ou adicione nossos planos de hospedagem completo.</p>
+                    <h3 class="text-2xl font-bold mb-2" data-translate="feature2_title">Flexibilidade Total</h3>
+                    <p class="text-muted" data-translate="feature2_desc">Pague apenas pelo desenvolvimento ou adicione nossos planos de hospedagem completo.</p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="card card-glow p-8 rounded-2xl transition-all duration-300">
                     <div class="bg-pink-500 bg-opacity-20 text-pink-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><path d="m12 9-2 4h4l-2 4"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Entrega Rápida</h3>
-                    <p class="text-muted">Receba seu site pronto para usar em tempo recorde, feito por desenvolvedores.</p>
+                    <h3 class="text-2xl font-bold mb-2" data-translate="feature3_title">Entrega Rápida</h3>
+                    <p class="text-muted" data-translate="feature3_desc">Receba seu site pronto para usar em tempo recorde, feito por desenvolvedores.</p>
                 </div>
             </div>
         </section>
@@ -283,62 +307,62 @@
         <!-- Pricing Section -->
         <section id="pricing" class="py-20 reveal">
              <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold tracking-tighter">Preços Claros e Flexíveis</h2>
-                <p class="text-lg text-muted mt-2">Monte o plano ideal para a sua necessidade.</p>
+                <h2 class="text-4xl font-bold tracking-tighter" data-translate="pricing_title">Preços Claros e Flexíveis</h2>
+                <p class="text-lg text-muted mt-2" data-translate="pricing_subtitle">Monte o plano ideal para a sua necessidade.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- Plan 1: Site Dev -->
                 <div class="card p-8 rounded-2xl flex flex-col h-full">
-                    <h3 class="text-2xl font-bold mb-2">Desenvolvimento do Site</h3>
+                    <h3 class="text-2xl font-bold mb-2" data-translate="plan1_title">Desenvolvimento do Site</h3>
                     <p class="text-5xl font-bold my-4">R$19<span class="text-3xl font-bold">,90</span></p>
-                    <p class="text-lg font-normal text-muted mb-6">Pagamento Único</p>
+                    <p class="text-lg font-normal text-muted mb-6" data-translate="plan1_payment">Pagamento Único</p>
                     <ul class="space-y-4 text-muted flex-grow">
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Design profissional e moderno</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Layout 100% responsivo</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Entrega do código-fonte completo</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan1_feature1">Design profissional e moderno</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan1_feature2">Layout 100% responsivo</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan1_feature3">Entrega do código-fonte completo</span></li>
                     </ul>
-                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20desenvolvimento%20do%20site%20por%20R$19,90" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors">Quero Só o Site</a>
+                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20desenvolvimento%20do%20site%20por%20R$19,90" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors" data-translate="plan1_button">Quero Só o Site</a>
                 </div>
 
                 <!-- Plan 2: Hosting + Site -->
                 <div class="card p-8 rounded-2xl flex flex-col h-full">
-                    <h3 class="text-2xl font-bold mb-2">Hospedagem + Site</h3>
+                    <h3 class="text-2xl font-bold mb-2" data-translate="plan2_title">Hospedagem + Site</h3>
                     <p class="text-5xl font-bold my-4">R$29<span class="text-3xl font-bold">,90</span></p>
-                    <p class="text-lg font-normal text-muted mb-6">Mensal</p>
+                    <p class="text-lg font-normal text-muted mb-6" data-translate="plan2_payment">Mensal</p>
                     <ul class="space-y-4 text-muted flex-grow">
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span><span class="font-bold text-green-400">Site Gratuito</span> (design incluso)</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Hospedagem rápida e segura</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Certificado de Segurança SSL</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Subdomínio gratuito</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan2_feature1"><span class="font-bold text-green-400">Site Gratuito</span> (design incluso)</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan2_feature2">Hospedagem rápida e segura</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan2_feature3">Certificado de Segurança SSL</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan2_feature4">Subdomínio gratuito</span></li>
                     </ul>
-                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20plano%20de%20Hospedagem%20%2B%20Site%20por%20R$29,90" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors">Contratar Hospedagem</a>
+                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20plano%20de%20Hospedagem%20%2B%20Site%20por%20R$29,90" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors" data-translate="plan2_button">Contratar Hospedagem</a>
                 </div>
 
                 <!-- Plan 3: Domain -->
                 <div class="card p-8 rounded-2xl flex flex-col h-full">
-                    <h3 class="text-2xl font-bold mb-2">Domínio Personalizado</h3>
+                    <h3 class="text-2xl font-bold mb-2" data-translate="plan3_title">Domínio Personalizado</h3>
                     <p class="text-5xl font-bold my-4">R$39<span class="text-3xl font-bold">,99</span></p>
-                    <p class="text-lg font-normal text-muted mb-6">Pagamento Anual</p>
+                    <p class="text-lg font-normal text-muted mb-6" data-translate="plan3_payment">Pagamento Anual</p>
                     <ul class="space-y-4 text-muted flex-grow">
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Endereço .com.br exclusivo</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Registro por 1 ano</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Mais profissionalismo para sua marca</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan3_feature1">Endereço .com.br exclusivo</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan3_feature2">Registro por 1 ano</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan3_feature3">Mais profissionalismo para sua marca</span></li>
                     </ul>
-                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20registrar%20um%20dom%C3%ADnio%20por%20R$39,99" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors">Registrar Domínio</a>
+                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20em%20registrar%20um%20dom%C3%ADnio%20por%20R$39,99" target="_blank" class="mt-8 w-full text-center header-button font-semibold py-3 rounded-lg transition-colors" data-translate="plan3_button">Registrar Domínio</a>
                 </div>
 
                 <!-- Plan 4: All-in-one -->
                 <div class="card p-8 rounded-2xl flex flex-col border-2 border-purple-500 shadow-2xl shadow-purple-500/30 relative h-full">
-                    <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Recomendado</span>
-                    <h3 class="text-2xl font-bold mb-2 text-purple-300">Hospedagem + Domínio + Site</h3>
+                    <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase" data-translate="plan4_badge">Recomendado</span>
+                    <h3 class="text-2xl font-bold mb-2 text-purple-300" data-translate="plan4_title">Hospedagem + Domínio + Site</h3>
                     <p class="text-5xl font-bold my-4 text-color">R$59<span class="text-3xl font-bold">,99</span></p>
-                    <p class="text-lg font-normal text-muted mb-6">Mensal</p>
+                    <p class="text-lg font-normal text-muted mb-6" data-translate="plan4_payment">Mensal</p>
                     <ul class="space-y-4 text-muted flex-grow">
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span><span class="font-bold text-green-400">TUDO</span> dos outros planos incluso</span></li>
-                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>A solução completa e sem preocupações</span></li>
-                         <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Manutenção e suporte prioritário</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan4_feature1"><span class="font-bold text-green-400">TUDO</span> dos outros planos incluso</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan4_feature2">A solução completa e sem preocupações</span></li>
+                         <li class="flex items-start"><svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span data-translate="plan4_feature3">Manutenção e suporte prioritário</span></li>
                     </ul>
-                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20plano%20completo%20de%20R$59,99" target="_blank" class="button-glow mt-8 w-full text-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 rounded-lg">Contratar Plano Completo</a>
+                    <a href="https://wa.me/5561986660241?text=Tenho%20interesse%20no%20plano%20completo%20de%20R$59,99" target="_blank" class="button-glow mt-8 w-full text-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 rounded-lg" data-translate="plan4_button">Contratar Plano Completo</a>
                 </div>
             </div>
         </section>
@@ -347,27 +371,27 @@
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 reveal">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold tracking-tighter">O que nossos clientes dizem</h2>
-                <p class="text-lg text-muted mt-2">A satisfação de quem já tem um site feito pela EncryptHost.</p>
+                <h2 class="text-4xl font-bold tracking-tighter" data-translate="testimonials_title">O que nossos clientes dizem</h2>
+                <p class="text-lg text-muted mt-2" data-translate="testimonials_subtitle">A satisfação de quem já tem um site feito pela EncryptHost.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="card card-glow p-8 rounded-2xl">
-                    <p class="text-muted italic mb-6">"Comprei só o desenvolvimento do site por R$19,90 e fiquei chocado com a qualidade. Código limpo e design incrível. Recomendo demais para quem já tem onde hospedar!"</p>
+                    <p class="text-muted italic mb-6" data-translate="testimonial1_text">"Comprei só o desenvolvimento do site por R$19,90 e fiquei chocado com a qualidade. Código limpo e design incrível. Recomendo demais para quem já tem onde hospedar!"</p>
                     <div class="flex items-center">
                         <img src="https://placehold.co/48x48/7C3AED/FFFFFF?text=JS" alt="Avatar de Joana Silva" class="w-12 h-12 rounded-full mr-4" onerror="this.onerror=null;this.src='https://placehold.co/48x48/CCCCCC/FFFFFF?text=??';">
                         <div>
-                            <p class="font-bold text-color">Juliana S.</p>
-                            <p class="text-sm text-muted">Dona de Pequeno Negócio</p>
+                            <p class="font-bold text-color" data-translate="testimonial1_name">Juliana S.</p>
+                            <p class="text-sm text-muted" data-translate="testimonial1_role">Dona de Pequeno Negócio</p>
                         </div>
                     </div>
                 </div>
                  <div class="card card-glow p-8 rounded-2xl">
-                    <p class="text-muted italic mb-6">"Optei pelo plano completo de R$59,99 e não me arrependo. Ter tudo funcionando sem dor de cabeça, com domínio próprio e suporte, vale cada centavo. Serviço impecável."</p>
+                    <p class="text-muted italic mb-6" data-translate="testimonial2_text">"Optei pelo plano completo de R$59,99 e não me arrependo. Ter tudo funcionando sem dor de cabeça, com domínio próprio e suporte, vale cada centavo. Serviço impecável."</p>
                     <div class="flex items-center">
                         <img src="https://placehold.co/48x48/EC4899/FFFFFF?text=MA" alt="Avatar de Marcos Andrade" class="w-12 h-12 rounded-full mr-4" onerror="this.onerror=null;this.src='https://placehold.co/48x48/CCCCCC/FFFFFF?text=??';">
                         <div>
-                            <p class="font-bold text-color">Ricardo Alves</p>
-                            <p class="text-sm text-muted">Fotógrafo Freelancer</p>
+                            <p class="font-bold text-color" data-translate="testimonial2_name">Ricardo Alves</p>
+                            <p class="text-sm text-muted" data-translate="testimonial2_role">Fotógrafo Freelancer</p>
                         </div>
                     </div>
                 </div>
@@ -377,29 +401,33 @@
         <!-- FAQ Section -->
         <section id="faq" class="py-20 reveal">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold tracking-tighter">Perguntas Frequentes</h2>
-                <p class="text-lg text-muted mt-2">Tirando todas as suas dúvidas.</p>
+                <h2 class="text-4xl font-bold tracking-tighter" data-translate="faq_title">Perguntas Frequentes</h2>
+                <p class="text-lg text-muted mt-2" data-translate="faq_subtitle">Tirando todas as suas dúvidas.</p>
             </div>
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-4xl mx-auto space-y-8">
                 <div class="faq-item">
-                    <h3 class="text-xl font-semibold mb-2">Qual a diferença entre os planos?</h3>
-                    <p class="text-muted">Oferecemos flexibilidade. Você pode comprar só o <span class="font-bold">Desenvolvimento do Site</span> (R$19,90), só o <span class="font-bold">Domínio</span> (R$39,99/ano), um plano de <span class="font-bold">Hospedagem com Site Grátis</span> (R$29,90/mês), ou o <span class="font-bold">Plano Completo</span> com tudo incluso (R$59,99/mês).</p>
+                    <h3 class="text-xl font-semibold mb-2" data-translate="faq1_question">Qual a diferença entre os planos?</h3>
+                    <p class="text-muted" data-translate="faq1_answer">Oferecemos flexibilidade. Você pode comprar só o <span class="font-bold">Desenvolvimento do Site</span> (R$19,90), só o <span class="font-bold">Domínio</span> (R$39,99/ano), um plano de <span class="font-bold">Hospedagem com Site Grátis</span> (R$29,90/mês), ou o <span class="font-bold">Plano Completo</span> com tudo incluso (R$59,99/mês).</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-xl font-semibold mb-2">O que é uma hospedagem e por que eu preciso dela?</h3>
-                    <p class="text-muted">Hospedagem é o serviço que armazena seu site e o torna acessível na internet 24/7. Pense nela como o "terreno" onde sua "casa" (o site) é construída. Sem hospedagem, ninguém consegue visitar seu site.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-translate="faq2_question">O que é uma hospedagem e por que eu preciso dela?</h3>
+                    <p class="text-muted" data-translate="faq2_answer">Hospedagem é o serviço que armazena seu site e o torna acessível na internet 24/7. Pense nela como o "terreno" onde sua "casa" (o site) é construída. Sem hospedagem, ninguém consegue visitar seu site.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="text-xl font-semibold mb-2">O que é um domínio?</h3>
-                    <p class="text-muted">Domínio é o endereço do seu site (ex: `www.suaempresa.com.br`). É como as pessoas encontram você na internet. Ter um domínio próprio passa mais credibilidade.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-translate="faq3_question">O que é um domínio?</h3>
+                    <p class="text-muted" data-translate="faq3_answer">Domínio é o endereço do seu site (ex: `www.suaempresa.com.br`). É como as pessoas encontram você na internet. Ter um domínio próprio passa mais credibilidade.</p>
                 </div>
                  <div class="faq-item">
-                    <h3 class="text-xl font-semibold mb-2">O plano "Hospedagem + Site" vem com domínio .com.br?</h3>
-                    <p class="text-muted">Não. O plano de R$29,90 inclui um subdomínio gratuito (ex: `seusite.encrypthost.com`). Para ter um domínio próprio como `.com.br`, você pode contratar o plano de Domínio separadamente ou escolher o Plano Completo, que já inclui tudo.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-translate="faq4_question">O plano "Hospedagem + Site" vem com domínio .com.br?</h3>
+                    <p class="text-muted" data-translate="faq4_answer">Não. O plano de R$29,90 inclui um subdomínio gratuito (ex: `seusite.encrypthost.com`). Para ter um domínio próprio como `.com.br`, você pode contratar o plano de Domínio separadamente ou escolher o Plano Completo, que já inclui tudo.</p>
                 </div>
                  <div class="faq-item">
-                    <h3 class="text-xl font-semibold mb-2">Posso contratar apenas a hospedagem se já tenho um site?</h3>
-                    <p class="text-muted">Sim! Se você já tem um site pronto, pode contratar um de nossos planos de hospedagem e nós faremos a migração para nossos servidores, cuidando de toda a configuração para você.</p>
+                    <h3 class="text-xl font-semibold mb-2" data-translate="faq5_question">Posso contratar apenas a hospedagem se já tenho um site?</h3>
+                    <p class="text-muted" data-translate="faq5_answer">Sim! Se você já tem um site pronto, pode contratar um de nossos planos de hospedagem e nós faremos a migração para nossos servidores, cuidando de toda a configuração para você.</p>
+                </div>
+                 <div class="faq-item">
+                    <h3 class="text-xl font-semibold mb-2" data-translate="faq6_question">A hospedagem de vocês suporta back-end (ex: com banco de dados)?</h3>
+                    <p class="text-muted" data-translate="faq6_answer">Nossos planos de hospedagem são otimizados para sites front-end (a parte visual e interativa que o usuário vê). Não incluem serviços de back-end, como bancos de dados ou processamento do lado do servidor. No entanto, seu site pode perfeitamente se conectar a serviços de back-end de terceiros, se necessário.</p>
                 </div>
             </div>
         </section>
@@ -407,17 +435,503 @@
 
         <!-- Footer -->
         <footer class="text-center py-12 border-t border-color mt-12">
-            <p class="text-muted">&copy; 2025 EncryptHost. Todos os direitos reservados.</p>
+            <p class="text-muted" data-translate="footer_text">&copy; 2025 EncryptHost. Todos os direitos reservados.</p>
              <div class="flex justify-center space-x-6 mt-4">
-                <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-500 hover:text-purple-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                 <a href="https://www.instagram.com/furionnzxt" target="_blank" class="text-gray-500 hover:text-purple-400">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
              </div>
         </footer>
     </div>
     
     <script>
+    // Objeto com todas as traduções.
+    const translations = {
+        pt: {
+            nav_features: "Vantagens",
+            nav_pricing: "Preços",
+            nav_testimonials: "Clientes",
+            nav_faq: "FAQ",
+            btn_get_quote: "Fazer Orçamento",
+            nav_features_mobile: "Vantagens",
+            nav_pricing_mobile: "Preços",
+            nav_testimonials_mobile: "Clientes",
+            nav_faq_mobile: "FAQ",
+            btn_get_quote_mobile: "Fazer Orçamento",
+            hero_title: 'Sites Profissionais com <br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Design Exclusivo do seu jeito</span>.',
+            hero_subtitle: "Flexibilidade para escolher exatamente o que você precisa. Comece com o desenvolvimento do seu site ou escolha um de nossos planos completos.",
+            btn_see_plans: "Ver Planos",
+            hero_image_caption: "Uma das nossas obras-primas",
+            features_title: "Vantagens que você só encontra aqui",
+            features_subtitle: "Qualidade profissional e transparência total.",
+            feature1_title: "Design Responsivo",
+            feature1_desc: "Seu site perfeito em qualquer dispositivo: celulares, tablets e computadores.",
+            feature2_title: "Flexibilidade Total",
+            feature2_desc: "Pague apenas pelo desenvolvimento ou adicione nossos planos de hospedagem completo.",
+            feature3_title: "Entrega Rápida",
+            feature3_desc: "Receba seu site pronto para usar em tempo recorde, feito por desenvolvedores.",
+            pricing_title: "Preços Claros e Flexíveis",
+            pricing_subtitle: "Monte o plano ideal para a sua necessidade.",
+            plan1_title: "Desenvolvimento do Site",
+            plan1_payment: "Pagamento Único",
+            plan1_feature1: "Design profissional e moderno",
+            plan1_feature2: "Layout 100% responsivo",
+            plan1_feature3: "Entrega do código-fonte completo",
+            plan1_button: "Quero Só o Site",
+            plan2_title: "Hospedagem + Site",
+            plan2_payment: "Mensal",
+            plan2_feature1: '<span class="font-bold text-green-400">Site Gratuito</span> (design incluso)',
+            plan2_feature2: "Hospedagem rápida e segura",
+            plan2_feature3: "Certificado de Segurança SSL",
+            plan2_feature4: "Subdomínio gratuito",
+            plan2_button: "Contratar Hospedagem",
+            plan3_title: "Domínio Personalizado",
+            plan3_payment: "Pagamento Anual",
+            plan3_feature1: "Endereço .com.br exclusivo",
+            plan3_feature2: "Registro por 1 ano",
+            plan3_feature3: "Mais profissionalismo para sua marca",
+            plan3_button: "Registrar Domínio",
+            plan4_badge: "Recomendado",
+            plan4_title: "Hospedagem + Domínio + Site",
+            plan4_payment: "Mensal",
+            plan4_feature1: '<span class="font-bold text-green-400">TUDO</span> dos outros planos incluso',
+            plan4_feature2: "A solução completa e sem preocupações",
+            plan4_feature3: "Manutenção e suporte prioritário",
+            plan4_button: "Contratar Plano Completo",
+            testimonials_title: "O que nossos clientes dizem",
+            testimonials_subtitle: "A satisfação de quem já tem um site feito pela EncryptHost.",
+            testimonial1_text: '"Comprei só o desenvolvimento do site por R$19,90 e fiquei chocado com a qualidade. Código limpo e design incrível. Recomendo demais para quem já tem onde hospedar!"',
+            testimonial1_name: "Juliana S.",
+            testimonial1_role: "Dona de Pequeno Negócio",
+            testimonial2_text: '"Optei pelo plano completo de R$59,99 e não me arrependo. Ter tudo funcionando sem dor de cabeça, com domínio próprio e suporte, vale cada centavo. Serviço impecável."',
+            testimonial2_name: "Ricardo Alves",
+            testimonial2_role: "Fotógrafo Freelancer",
+            faq_title: "Perguntas Frequentes",
+            faq_subtitle: "Tirando todas as suas dúvidas.",
+            faq1_question: "Qual a diferença entre os planos?",
+            faq1_answer: 'Oferecemos flexibilidade. Você pode comprar só o <span class="font-bold">Desenvolvimento do Site</span> (R$19,90), só o <span class="font-bold">Domínio</span> (R$39,99/ano), um plano de <span class="font-bold">Hospedagem com Site Grátis</span> (R$29,90/mês), ou o <span class="font-bold">Plano Completo</span> com tudo incluso (R$59,99/mês).',
+            faq2_question: "O que é uma hospedagem e por que eu preciso dela?",
+            faq2_answer: 'Hospedagem é o serviço que armazena seu site e o torna acessível na internet 24/7. Pense nela como o "terreno" onde sua "casa" (o site) é construída. Sem hospedagem, ninguém consegue visitar seu site.',
+            faq3_question: "O que é um domínio?",
+            faq3_answer: 'Domínio é o endereço do seu site (ex: `www.suaempresa.com.br`). É como as pessoas encontram você na internet. Ter um domínio próprio passa mais credibilidade.',
+            faq4_question: 'O plano "Hospedagem + Site" vem com domínio .com.br?',
+            faq4_answer: "Não. O plano de R$29,90 inclui um subdomínio gratuito (ex: `seusite.encrypthost.com`). Para ter um domínio próprio como `.com.br`, você pode contratar o plano de Domínio separadamente ou escolher o Plano Completo, que já inclui tudo.",
+            faq5_question: "Posso contratar apenas a hospedagem se já tenho um site?",
+            faq5_answer: "Sim! Se você já tem um site pronto, pode contratar um de nossos planos de hospedagem e nós faremos a migração para nossos servidores, cuidando de toda a configuração para você.",
+            faq6_question: "A hospedagem de vocês suporta back-end (ex: com banco de dados)?",
+            faq6_answer: "Nossos planos de hospedagem são otimizados para sites front-end (a parte visual e interativa que o usuário vê). Não incluem serviços de back-end, como bancos de dados ou processamento do lado do servidor. No entanto, seu site pode perfeitamente se conectar a serviços de back-end de terceiros, se necessário.",
+            footer_text: "&copy; 2025 EncryptHost. Todos os direitos reservados.",
+        },
+        en: {
+            nav_features: "Features",
+            nav_pricing: "Pricing",
+            nav_testimonials: "Testimonials",
+            nav_faq: "FAQ",
+            btn_get_quote: "Get a Quote",
+            nav_features_mobile: "Features",
+            nav_pricing_mobile: "Pricing",
+            nav_testimonials_mobile: "Testimonials",
+            nav_faq_mobile: "FAQ",
+            btn_get_quote_mobile: "Get a Quote",
+            hero_title: 'Professional Websites with <br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Exclusive Design Your Way</span>.',
+            hero_subtitle: "Flexibility to choose exactly what you need. Start with your website development or choose one of our complete plans.",
+            btn_see_plans: "See Plans",
+            hero_image_caption: "One of our masterpieces",
+            features_title: "Advantages You Only Find Here",
+            features_subtitle: "Professional quality and total transparency.",
+            feature1_title: "Responsive Design",
+            feature1_desc: "Your website looking perfect on any device: smartphones, tablets, and computers.",
+            feature2_title: "Full Flexibility",
+            feature2_desc: "Pay only for development or add our complete hosting plans.",
+            feature3_title: "Fast Delivery",
+            feature3_desc: "Receive your site ready to use in record time, made by developers.",
+            pricing_title: "Clear and Flexible Pricing",
+            pricing_subtitle: "Build the ideal plan for your needs.",
+            plan1_title: "Website Development",
+            plan1_payment: "One-time Payment",
+            plan1_feature1: "Professional and modern design",
+            plan1_feature2: "100% responsive layout",
+            plan1_feature3: "Full source code delivery",
+            plan1_button: "I Just Want the Site",
+            plan2_title: "Hosting + Website",
+            plan2_payment: "Monthly",
+            plan2_feature1: '<span class="font-bold text-green-400">Free Website</span> (design included)',
+            plan2_feature2: "Fast and secure hosting",
+            plan2_feature3: "SSL Security Certificate",
+            plan2_feature4: "Free subdomain",
+            plan2_button: "Get Hosting",
+            plan3_title: "Custom Domain",
+            plan3_payment: "Annual Payment",
+            plan3_feature1: "Exclusive .com.br address",
+            plan3_feature2: "1-year registration",
+            plan3_feature3: "More professionalism for your brand",
+            plan3_button: "Register Domain",
+            plan4_badge: "Recommended",
+            plan4_title: "Hosting + Domain + Website",
+            plan4_payment: "Monthly",
+            plan4_feature1: '<span class="font-bold text-green-400">EVERYTHING</span> from other plans included',
+            plan4_feature2: "The complete and worry-free solution",
+            plan4_feature3: "Priority maintenance and support",
+            plan4_button: "Get Complete Plan",
+            testimonials_title: "What Our Clients Say",
+            testimonials_subtitle: "The satisfaction of those who already have a site made by EncryptHost.",
+            testimonial1_text: '"I only bought the website development for R$19.90 and was shocked by the quality. Clean code and incredible design. Highly recommend for anyone who already has hosting!"',
+            testimonial1_name: "Juliana S.",
+            testimonial1_role: "Small Business Owner",
+            testimonial2_text: '"I opted for the complete plan for R$59.99 and have no regrets. Having everything working without a headache, with a custom domain and support, is worth every penny. Impeccable service."',
+            testimonial2_name: "Ricardo Alves",
+            testimonial2_role: "Freelance Photographer",
+            faq_title: "Frequently Asked Questions",
+            faq_subtitle: "Answering all your questions.",
+            faq1_question: "What is the difference between the plans?",
+            faq1_answer: 'We offer flexibility. You can buy just the <span class="font-bold">Website Development</span> (R$19.90), just the <span class="font-bold">Domain</span> (R$39.99/year), a <span class="font-bold">Hosting plan with a Free Website</span> (R$29.90/month), or the <span class="font-bold">Complete Plan</span> with everything included (R$59.99/month).',
+            faq2_question: "What is hosting and why do I need it?",
+            faq2_answer: 'Hosting is the service that stores your website and makes it accessible on the internet 24/7. Think of it as the "land" where your "house" (the website) is built. Without hosting, no one can visit your site.',
+            faq3_question: "What is a domain?",
+            faq3_answer: 'A domain is your website\'s address (e.g., `www.yourcompany.com.br`). It\'s how people find you on the internet. Having your own domain adds more credibility.',
+            faq4_question: 'Does the "Hosting + Website" plan come with a .com.br domain?',
+            faq4_answer: "No. The R$29.90 plan includes a free subdomain (e.g., `yoursite.encrypthost.com`). To have your own domain like `.com.br`, you can purchase the Domain plan separately or choose the Complete Plan, which already includes everything.",
+            faq5_question: "Can I just get hosting if I already have a site?",
+            faq5_answer: "Yes! If you already have a ready site, you can sign up for one of our hosting plans and we will migrate it to our servers, taking care of all the configuration for you.",
+            faq6_question: "Does your hosting support a back-end (e.g., with a database)?",
+            faq6_answer: "Our hosting plans are optimized for front-end websites (the visual and interactive part the user sees). They do not include back-end services, such as databases or server-side processing. However, your site can perfectly connect to third-party back-end services if needed.",
+            footer_text: "&copy; 2025 EncryptHost. All rights reserved.",
+        },
+        ru: {
+            nav_features: "Преимущества",
+            nav_pricing: "Цены",
+            nav_testimonials: "Отзывы",
+            nav_faq: "ЧАВО",
+            btn_get_quote: "Получить расчет",
+            nav_features_mobile: "Преимущества",
+            nav_pricing_mobile: "Цены",
+            nav_testimonials_mobile: "Отзывы",
+            nav_faq_mobile: "ЧАВО",
+            btn_get_quote_mobile: "Получить расчет",
+            hero_title: 'Профессиональные сайты с <br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">эксклюзивным дизайном по-вашему</span>.',
+            hero_subtitle: "Гибкость в выборе именно того, что вам нужно. Начните с разработки вашего сайта или выберите один из наших полных планов.",
+            btn_see_plans: "Посмотреть планы",
+            hero_image_caption: "Один из наших шедевров",
+            features_title: "Преимущества, которые вы найдете только здесь",
+            features_subtitle: "Профессиональное качество и полная прозрачность.",
+            feature1_title: "Адаптивный дизайн",
+            feature1_desc: "Ваш сайт идеально выглядит на любом устройстве: смартфонах, планшетах и компьютерах.",
+            feature2_title: "Полная гибкость",
+            feature2_desc: "Платите только за разработку или добавьте наши полные планы хостинга.",
+            feature3_title: "Быстрая доставка",
+            feature3_desc: "Получите готовый к использованию сайт в рекордно короткие сроки от разработчиков.",
+            pricing_title: "Ясные и гибкие цены",
+            pricing_subtitle: "Создайте идеальный план для ваших нужд.",
+            plan1_title: "Разработка сайта",
+            plan1_payment: "Единовременный платеж",
+            plan1_feature1: "Профессиональный и современный дизайн",
+            plan1_feature2: "100% адаптивный макет",
+            plan1_feature3: "Полная передача исходного кода",
+            plan1_button: "Хочу только сайт",
+            plan2_title: "Хостинг + Сайт",
+            plan2_payment: "Ежемесячно",
+            plan2_feature1: '<span class="font-bold text-green-400">Бесплатный сайт</span> (включая дизайн)',
+            plan2_feature2: "Быстрый и безопасный хостинг",
+            plan2_feature3: "Сертификат безопасности SSL",
+            plan2_feature4: "Бесплатный поддомен",
+            plan2_button: "Заказать хостинг",
+            plan3_title: "Пользовательский домен",
+            plan3_payment: "Ежегодный платеж",
+            plan3_feature1: "Эксклюзивный адрес .com.br",
+            plan3_feature2: "Регистрация на 1 год",
+            plan3_feature3: "Больше профессионализма для вашего бренда",
+            plan3_button: "Зарегистрировать домен",
+            plan4_badge: "Рекомендуемый",
+            plan4_title: "Хостинг + Домен + Сайт",
+            plan4_payment: "Ежемесячно",
+            plan4_feature1: '<span class="font-bold text-green-400">ВСЁ</span> из других планов включено',
+            plan4_feature2: "Полное и беззаботное решение",
+            plan4_feature3: "Приоритетное обслуживание и поддержка",
+            plan4_button: "Заказать полный план",
+            testimonials_title: "Что говорят наши клиенты",
+            testimonials_subtitle: "Удовлетворение тех, у кого уже есть сайт, сделанный EncryptHost.",
+            testimonial1_text: '"Я купил только разработку сайта за 19,90 реалов и был в шоке от качества. Чистый код и невероятный дизайн. Настоятельно рекомендую всем, у кого уже есть хостинг!"',
+            testimonial1_name: "Юлиана С.",
+            testimonial1_role: "Владелец малого бизнеса",
+            testimonial2_text: '"Я выбрал полный план за 59,99 реалов и не жалею. Все работает без головной боли, с собственным доменом и поддержкой, стоит каждого потраченного цента. Безупречный сервис."',
+            testimonial2_name: "Рикардо Алвес",
+            testimonial2_role: "Фотограф-фрилансер",
+            faq_title: "Часто задаваемые вопросы",
+            faq_subtitle: "Отвечаем на все ваши вопросы.",
+            faq1_question: "В чем разница между планами?",
+            faq1_answer: 'Мы предлагаем гибкость. Вы можете купить только <span class="font-bold">разработку сайта</span> (19,90 реалов), только <span class="font-bold">домен</span> (39,99 реалов в год), план <span class="font-bold">хостинга с бесплатным сайтом</span> (29,90 реалов в месяц) или <span class="font-bold">полный план</span> со всем включенным (59,99 реалов в месяц).',
+            faq2_question: "Что такое хостинг и зачем он мне нужен?",
+            faq2_answer: 'Хостинг — это услуга, которая хранит ваш сайт и делает его доступным в Интернете 24/7. Думайте о нем как о "земле", на которой построен ваш "дом" (сайт). Без хостинга никто не сможет посетить ваш сайт.',
+            faq3_question: "Что такое домен?",
+            faq3_answer: 'Домен — это адрес вашего сайта (например, `www.yourcompany.com.br`). Это то, как люди находят вас в Интернете. Наличие собственного домена повышает доверие.',
+            faq4_question: 'Включает ли план "Хостинг + Сайт" домен .com.br?',
+            faq4_answer: "Нет. План за 29,90 реалов включает бесплатный поддомен (например, `yoursite.encrypthost.com`). Чтобы иметь собственный домен, такой как `.com.br`, вы можете приобрести план домена отдельно или выбрать полный план, который уже включает все.",
+            faq5_question: "Могу ли я заказать только хостинг, если у меня уже есть сайт?",
+            faq5_answer: "Да! Если у вас уже есть готовый сайт, вы можете подписаться на один из наших планов хостинга, и мы перенесем его на наши серверы, позаботившись обо всех настройках за вас.",
+            faq6_question: "Ваш хостинг поддерживает бэкэнд (например, с базой данных)?",
+            faq6_answer: "Наши хостинг-планы оптимизированы для фронтенд-сайтов (визуальная и интерактивная часть, которую видит пользователь). Они не включают бэкэнд-сервисы, такие как базы данных или обработку на стороне сервера. Однако ваш сайт может без проблем подключаться к сторонним бэкэнд-сервисам при необходимости.",
+            footer_text: "&copy; 2025 EncryptHost. Все права защищены.",
+        },
+        es: {
+            nav_features: "Ventajas",
+            nav_pricing: "Precios",
+            nav_testimonials: "Testimonios",
+            nav_faq: "FAQ",
+            btn_get_quote: "Solicitar Presupuesto",
+            nav_features_mobile: "Ventajas",
+            nav_pricing_mobile: "Precios",
+            nav_testimonials_mobile: "Testimonios",
+            nav_faq_mobile: "FAQ",
+            btn_get_quote_mobile: "Solicitar Presupuesto",
+            hero_title: 'Sitios Web Profesionales con <br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">Diseño Exclusivo a tu Manera</span>.',
+            hero_subtitle: "Flexibilidad para elegir exactamente lo que necesitas. Comienza con el desarrollo de tu sitio web o elige uno de nuestros planes completos.",
+            btn_see_plans: "Ver Planes",
+            hero_image_caption: "Una de nuestras obras maestras",
+            features_title: "Ventajas que solo encontrarás aquí",
+            features_subtitle: "Calidad profesional y total transparencia.",
+            feature1_title: "Diseño Responsivo",
+            feature1_desc: "Tu sitio perfecto en cualquier dispositivo: móviles, tabletas y ordenadores.",
+            feature2_title: "Flexibilidad Total",
+            feature2_desc: "Paga solo por el desarrollo o añade nuestros planes completos de alojamiento.",
+            feature3_title: "Entrega Rápida",
+            feature3_desc: "Recibe tu sitio listo para usar en tiempo récord, hecho por desarrolladores.",
+            pricing_title: "Precios Claros y Flexibles",
+            pricing_subtitle: "Crea el plan ideal para tus necesidades.",
+            plan1_title: "Desarrollo del Sitio Web",
+            plan1_payment: "Pago Único",
+            plan1_feature1: "Diseño profesional y moderno",
+            plan1_feature2: "Diseño 100% responsivo",
+            plan1_feature3: "Entrega del código fuente completo",
+            plan1_button: "Quiero Solo el Sitio",
+            plan2_title: "Alojamiento + Sitio Web",
+            plan2_payment: "Mensual",
+            plan2_feature1: '<span class="font-bold text-green-400">Sitio Web Gratis</span> (diseño incluido)',
+            plan2_feature2: "Alojamiento rápido y seguro",
+            plan2_feature3: "Certificado de Seguridad SSL",
+            plan2_feature4: "Subdominio gratuito",
+            plan2_button: "Contratar Alojamiento",
+            plan3_title: "Dominio Personalizado",
+            plan3_payment: "Pago Anual",
+            plan3_feature1: "Dirección .com.br exclusiva",
+            plan3_feature2: "Registro por 1 año",
+            plan3_feature3: "Más profesionalismo para tu marca",
+            plan3_button: "Registrar Dominio",
+            plan4_badge: "Recomendado",
+            plan4_title: "Alojamiento + Dominio + Sitio Web",
+            plan4_payment: "Mensual",
+            plan4_feature1: '<span class="font-bold text-green-400">TODO</span> de los otros planes incluido',
+            plan4_feature2: "La solución completa y sin preocupaciones",
+            plan4_feature3: "Mantenimiento y soporte prioritario",
+            plan4_button: "Contratar Plan Completo",
+            testimonials_title: "Lo que dicen nuestros clientes",
+            testimonials_subtitle: "La satisfacción de quienes ya tienen un sitio hecho por EncryptHost.",
+            testimonial1_text: '"Compré solo el desarrollo del sitio por R$19,90 y quedé impresionado con la calidad. Código limpio y diseño increíble. ¡Lo recomiendo mucho para quien ya tiene dónde alojar!"',
+            testimonial1_name: "Juliana S.",
+            testimonial1_role: "Dueña de Pequeño Negocio",
+            testimonial2_text: '"Opté por el plan completo de R$59,99 y no me arrepiento. Tener todo funcionando sin dolores de cabeza, con dominio propio y soporte, vale cada céntimo. Servicio impecable."',
+            testimonial2_name: "Ricardo Alves",
+            testimonial2_role: "Fotógrafo Freelance",
+            faq_title: "Preguntas Frecuentes",
+            faq_subtitle: "Resolviendo todas tus dudas.",
+            faq1_question: "¿Cuál es la diferencia entre los planes?",
+            faq1_answer: 'Ofrecemos flexibilidad. Puedes comprar solo el <span class="font-bold">Desarrollo del Sitio Web</span> (R$19,90), solo el <span class="font-bold">Dominio</span> (R$39,99/año), un plan de <span class="font-bold">Alojamiento con Sitio Web Gratis</span> (R$29,90/mes), o el <span class="font-bold">Plan Completo</span> con todo incluido (R$59,99/mes).',
+            faq2_question: "¿Qué es el alojamiento y por qué lo necesito?",
+            faq2_answer: 'El alojamiento es el servicio que almacena tu sitio web y lo hace accesible en internet 24/7. Piénsalo como el "terreno" donde se construye tu "casa" (el sitio web). Sin alojamiento, nadie puede visitar tu sitio.',
+            faq3_question: "¿Qué es un dominio?",
+            faq3_answer: 'Un dominio es la dirección de tu sitio web (ej: `www.tuempresa.com.br`). Es cómo la gente te encuentra en internet. Tener un dominio propio da más credibilidad.',
+            faq4_question: '¿El plan "Alojamiento + Sitio Web" incluye un dominio .com.br?',
+            faq4_answer: "No. El plan de R$29,90 incluye un subdominio gratuito (ej: `tusitio.encrypthost.com`). Para tener un dominio propio como `.com.br`, puedes contratar el plan de Dominio por separado o elegir el Plan Completo, que ya lo incluye todo.",
+            faq5_question: "¿Puedo contratar solo el alojamiento si ya tengo un sitio web?",
+            faq5_answer: "¡Sí! Si ya tienes un sitio web listo, puedes contratar uno de nuestros planes de alojamiento y nosotros haremos la migración a nuestros servidores, encargándonos de toda la configuración por ti.",
+            faq6_question: "¿Su hosting soporta back-end (ej: con base de datos)?",
+            faq6_answer: "Nuestros planes de hosting están optimizados para sitios web front-end (la parte visual e interactiva que ve el usuario). No incluyen servicios de back-end, como bases de datos o procesamiento del lado del servidor. Sin embargo, su sitio puede conectarse perfectamente a servicios de back-end de terceros si es necesario.",
+            footer_text: "&copy; 2025 EncryptHost. Todos los derechos reservados.",
+        },
+        ja: {
+            nav_features: "利点",
+            nav_pricing: "価格",
+            nav_testimonials: "お客様の声",
+            nav_faq: "よくある質問",
+            btn_get_quote: "見積もり依頼",
+            nav_features_mobile: "利点",
+            nav_pricing_mobile: "価格",
+            nav_testimonials_mobile: "お客様の声",
+            nav_faq_mobile: "よくある質問",
+            btn_get_quote_mobile: "見積もり依頼",
+            hero_title: 'プロフェッショナルなウェブサイトを<br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">あなただけの特別デザインで</span>。',
+            hero_subtitle: "必要なものを正確に選べる柔軟性。ウェブサイト開発から始めるか、完全なプランをお選びください。",
+            btn_see_plans: "プランを見る",
+            hero_image_caption: "私たちの傑作の一つ",
+            features_title: "ここでしか見つけられない利点",
+            features_subtitle: "プロ品質と完全な透明性。",
+            feature1_title: "レスポンシブデザイン",
+            feature1_desc: "スマートフォン、タブレット、コンピューターなど、あらゆるデバイスで完璧なサイト。",
+            feature2_title: "完全な柔軟性",
+            feature2_desc: "開発のみの支払いか、完全なホスティングプランを追加するかを選択できます。",
+            feature3_title: "迅速な納品",
+            feature3_desc: "開発者によって作られた、すぐに使えるサイトを記録的な速さで受け取ります。",
+            pricing_title: "明確で柔軟な価格設定",
+            pricing_subtitle: "あなたのニーズに最適なプランを構築します。",
+            plan1_title: "ウェブサイト開発",
+            plan1_payment: "一回払い",
+            plan1_feature1: "プロフェッショナルでモダンなデザイン",
+            plan1_feature2: "100%レスポンシブレイアウト",
+            plan1_feature3: "完全なソースコードの納品",
+            plan1_button: "サイトだけ欲しい",
+            plan2_title: "ホスティング+サイト",
+            plan2_payment: "月額",
+            plan2_feature1: '<span class="font-bold text-green-400">無料サイト</span> (デザイン込み)',
+            plan2_feature2: "高速で安全なホスティング",
+            plan2_feature3: "SSLセキュリティ証明書",
+            plan2_feature4: "無料サブドメイン",
+            plan2_button: "ホスティングを契約",
+            plan3_title: "カスタムドメイン",
+            plan3_payment: "年払い",
+            plan3_feature1: "専用の.com.brアドレス",
+            plan3_feature2: "1年間の登録",
+            plan3_feature3: "ブランドのプロフェッショナリズム向上",
+            plan3_button: "ドメインを登録",
+            plan4_badge: "推奨",
+            plan4_title: "ホスティング+ドメイン+サイト",
+            plan4_payment: "月額",
+            plan4_feature1: '<span class="font-bold text-green-400">すべて</span>のプラン内容を含む',
+            plan4_feature2: "心配無用の完全なソリューション",
+            plan4_feature3: "優先的なメンテナンスとサポート",
+            plan4_button: "完全プランを契約",
+            testimonials_title: "お客様の声",
+            testimonials_subtitle: "EncryptHostが作成したサイトをお持ちの方々の満足の声。",
+            testimonial1_text: '"R$19.90でサイト開発だけを購入しましたが、その品質に驚きました。クリーンなコードと素晴らしいデザイン。すでにホスティングを持っている人には絶対にお勧めです！"',
+            testimonial1_name: "ジュリアナ・S",
+            testimonial1_role: "小規模ビジネスオーナー",
+            testimonial2_text: '"R$59.99の完全プランを選びましたが、後悔はありません。カスタムドメインとサポート付きで、頭を悩ませることなくすべてが機能するのは、一銭の価値があります。完璧なサービスです。"',
+            testimonial2_name: "リカルド・アウベス",
+            testimonial2_role: "フリーランス写真家",
+            faq_title: "よくある質問",
+            faq_subtitle: "すべての疑問にお答えします。",
+            faq1_question: "プランの違いは何ですか？",
+            faq1_answer: '柔軟性を提供しています。<span class="font-bold">ウェブサイト開発</span>（R$19.90）、<span class="font-bold">ドメイン</span>（R$39.99/年）、<span class="font-bold">無料サイト付きホスティングプラン</span>（R$29.90/月）、またはすべてが含まれた<span class="font-bold">完全プラン</span>（R$59.99/月）をご購入いただけます。',
+            faq2_question: "ホスティングとは何ですか？なぜ必要ですか？",
+            faq2_answer: 'ホスティングは、ウェブサイトを保存し、インターネット上で24時間365日アクセス可能にするサービスです。ウェブサイトという「家」を建てるための「土地」と考えてください。ホスティングがなければ、誰もあなたのサイトを訪問できません。',
+            faq3_question: "ドメインとは何ですか？",
+            faq3_answer: 'ドメインはウェブサイトのアドレスです（例：`www.yourcompany.com.br`）。インターネット上で人々があなたを見つけるためのものです。独自のドメインを持つことで、信頼性が高まります。',
+            faq4_question: '「ホスティング+サイト」プランには.com.brドメインが含まれていますか？',
+            faq4_answer: "いいえ。R$29.90のプランには無料のサブドメイン（例：`yoursite.encrypthost.com`）が含まれています。`.com.br`のような独自のドメインを持つには、ドメインプランを別途購入するか、すべてが含まれている完全プランを選択する必要があります。",
+            faq5_question: "すでにサイトを持っている場合、ホスティングだけを契約できますか？",
+            faq5_answer: "はい！すでに完成したサイトをお持ちの場合は、当社のホスティングプランにご契約いただければ、すべての設定をこちらで行い、サーバーへの移行作業をいたします。",
+            faq6_question: "ホスティングはバックエンド（例：データベース）をサポートしていますか？",
+            faq6_answer: "当社のホスティングプランは、フロントエンドウェブサイト（ユーザーが見る視覚的でインタラクティブな部分）に最適化されています。データベースやサーバーサイド処理などのバックエンドサービスは含まれていません。ただし、必要に応じて、お客様のサイトをサードパーティのバックエンドサービスに完全に接続することができます。",
+            footer_text: "&copy; 2025 EncryptHost. 無断複写・転載を禁じます。",
+        },
+        zh: {
+            nav_features: "优势",
+            nav_pricing: "价钱",
+            nav_testimonials: "感言",
+            nav_faq: "常问问题",
+            btn_get_quote: "获取报价",
+            nav_features_mobile: "优势",
+            nav_pricing_mobile: "价钱",
+            nav_testimonials_mobile: "感言",
+            nav_faq_mobile: "常问问题",
+            btn_get_quote_mobile: "获取报价",
+            hero_title: '专业的网站<br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">独家设计，随心所欲</span>。',
+            hero_subtitle: "灵活选择您所需。从网站开发开始，或选择我们的完整计划之一。",
+            btn_see_plans: "查看计划",
+            hero_image_caption: "我们的杰作之一",
+            features_title: "您只能在这里找到的优势",
+            features_subtitle: "专业品质，完全透明。",
+            feature1_title: "响应式设计",
+            feature1_desc: "您的网站在任何设备上都完美无瑕：智能手机、平板电脑和电脑。",
+            feature2_title: "完全灵活",
+            feature2_desc: "仅为开发付费或添加我们的完整托管计划。",
+            feature3_title: "快速交付",
+            feature3_desc: "由开发人员在创纪录的时间内交付您的网站，随时可用。",
+            pricing_title: "清晰灵活的定价",
+            pricing_subtitle: "根据您的需求制定理想的计划。",
+            plan1_title: "网站开发",
+            plan1_payment: "一次性付款",
+            plan1_feature1: "专业和现代的设计",
+            plan1_feature2: "100%响应式布局",
+            plan1_feature3: "完整的源代码交付",
+            plan1_button: "我只需要网站",
+            plan2_title: "托管+网站",
+            plan2_payment: "每月",
+            plan2_feature1: '<span class="font-bold text-green-400">免费网站</span> (包括设计)',
+            plan2_feature2: "快速安全的主机",
+            plan2_feature3: "SSL安全证书",
+            plan2_feature4: "免费子域名",
+            plan2_button: "购买托管",
+            plan3_title: "自定义域名",
+            plan3_payment: "每年付款",
+            plan3_feature1: "独家.com.br地址",
+            plan3_feature2: "1年注册",
+            plan3_feature3: "为您的品牌增添专业性",
+            plan3_button: "注册域名",
+            plan4_badge: "推荐",
+            plan4_title: "托管+域名+网站",
+            plan4_payment: "每月",
+            plan4_feature1: '<span class="font-bold text-green-400">包含</span>其他计划的所有内容',
+            plan4_feature2: "完整无忧的解决方案",
+            plan4_feature3: "优先维护和支持",
+            plan4_button: "购买完整计划",
+            testimonials_title: "客户怎么说",
+            testimonials_subtitle: "那些已经拥有EncryptHost制作的网站的客户的满意度。",
+            testimonial1_text: '“我只花了19.90雷亚尔购买了网站开发，质量令我震惊。干净的代码和令人难以置信的设计。强烈推荐给已经有托管的人！”',
+            testimonial1_name: "朱莉安娜·S",
+            testimonial1_role: "小企业主",
+            testimonial2_text: '“我选择了59.99雷亚尔的完整计划，毫不后悔。拥有一切正常运行，没有麻烦，拥有自定义域名和支持，物有所值。无可挑剔的服务。”',
+            testimonial2_name: "里卡多·阿尔维斯",
+            testimonial2_role: "自由摄影师",
+            faq_title: "常见问题",
+            faq_subtitle: "回答您的所有问题。",
+            faq1_question: "计划之间有什么区别？",
+            faq1_answer: '我们提供灵活性。您可以只购买<span class="font-bold">网站开发</span>（19.90雷亚尔），只购买<span class="font-bold">域名</span>（39.99雷亚尔/年），一个<span class="font-bold">带免费网站的托管计划</span>（29.90雷亚尔/月），或者包含所有内容的<span class="font-bold">完整计划</span>（59.99雷亚尔/月）。',
+            faq2_question: "什么是托管，为什么我需要它？",
+            faq2_answer: '托管是存储您的网站并使其在互联网上24/7可访问的服务。把它想象成建造您的“房子”（网站）的“土地”。没有托管，没有人可以访问您的网站。',
+            faq3_question: "什么是域名？",
+            faq3_answer: '域名是您网站的地址（例如`www.yourcompany.com.br`）。人们通过它在互联网上找到您。拥有自己的域名会增加信誉。',
+            faq4_question: '“托管+网站”计划是否附带.com.br域名？',
+            faq4_answer: "不。29.90雷亚尔的计划包括一个免费的子域名（例如`yoursite.encrypthost.com`）。要拥有像`.com.br`这样的自己的域名，您可以单独购买域名计划或选择包含所有内容的完整计划。",
+            faq5_question: "如果我已经有网站，可以只购买托管吗？",
+            faq5_answer: "是的！如果您已经有一个现成的网站，您可以注册我们的一个托管计划，我们会将其迁移到我们的服务器，并为您处理所有配置。",
+            faq6_question: "你们的托管支持后端（例如数据库）吗？",
+            faq6_answer: "我们的托管计划针对前端网站（用户看到的视觉和交互部分）进行了优化。它们不包括后端服务，例如数据库或服务器端处理。但是，如果需要，您的网站可以完美地连接到第三方后端服务。",
+            footer_text: "&copy; 2025 EncryptHost. 版权所有。",
+        }
+    };
+
+    function setLanguage(lang, event) {
+        // Prevent default anchor behavior
+        if(event) {
+            event.preventDefault();
+        }
+
+        // Fallback to Portuguese if the language or a specific translation is missing
+        const langPack = translations[lang] || translations.pt;
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            const translation = langPack[key] || translations.pt[key];
+            if (translation) {
+                el.innerHTML = translation;
+            }
+        });
+        
+        // Update the main language switcher button text
+        const langSwitcherBtn = document.getElementById('lang-switcher-btn');
+        if (langSwitcherBtn) {
+            langSwitcherBtn.childNodes[0].nodeValue = `${lang.toUpperCase()} `;
+        }
+    }
+
+
     document.addEventListener('DOMContentLoaded', () => {
+        // Set initial language based on browser preference or default to 'pt'
+        const userLang = navigator.language || navigator.userLanguage;
+        const initialLang = userLang.split('-')[0];
+        if (translations[initialLang]) {
+            setLanguage(initialLang);
+        } else {
+            setLanguage('pt');
+        }
 
         // Animação de revelação ao rolar a página
         const revealElements = document.querySelectorAll('.reveal');
@@ -439,21 +953,27 @@
         const openMenuBtn = document.getElementById('open-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a, button');
+
+        function closeMobileMenu() {
+             mobileMenu.classList.add('hidden');
+        }
 
         openMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
         });
 
-        closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
 
-        mobileMenuLinks.forEach(link => {
+        mobileMenu.querySelectorAll('a[href^="#"], button').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                // We only close if it's a link to a section or a language button
+                if(link.tagName === 'BUTTON' || (link.getAttribute('href') && link.getAttribute('href').startsWith('#'))) {
+                    closeMobileMenu();
+                }
             });
         });
+
 
         // Lógica do Interruptor de Tema
         const themeCheckbox = document.getElementById('theme-checkbox');
@@ -468,14 +988,18 @@
             }
         }
 
+        function syncCheckboxes(source, target) {
+            target.checked = source.checked;
+        }
+
         themeCheckbox.addEventListener('change', () => {
             applyTheme(themeCheckbox.checked);
-            mobileThemeCheckbox.checked = themeCheckbox.checked;
+            syncCheckboxes(themeCheckbox, mobileThemeCheckbox);
         });
 
          mobileThemeCheckbox.addEventListener('change', () => {
             applyTheme(mobileThemeCheckbox.checked);
-            themeCheckbox.checked = mobileThemeCheckbox.checked;
+            syncCheckboxes(mobileThemeCheckbox, themeCheckbox);
         });
 
     });
